@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<neta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/final1.css" rel="stylesheet" type="text/css">
+ <script>
+
+ 	function evento_onload(){
+      	alert("Bienvenido asu ultima evaluacion tu exito te espera !!!");
+   }
+
+</script>
+</head>
+<body onload="evento_onload()"> 
+    <div id="div" align="center">
+   	    <h1>Mi evaluacion Final</h1>
+   	    <h3>Bien venido asu asu ultima evaluacion final,que corresponde al 1 curso de javaScript, Acontinuacion por favor haga click en los botones y podra ver: el listado de estudiantes con su datos, el promedio de notas de los estudiantes</h3>
+    <button onclick="mostrarEstudiantes()">Mostrar Estudiantes</button><br><br>
+         <p id="estudiantes"></p>
+    <button onclick="miFuncion()">Mostar Promedio</button>
+         <p id="mensaje"></p>
+    <button onclick="mostrarNotaMayor()">Mostrar Nota Mayor</button><br><br>
+         <p id="nota mayor"></p>
+     <button onclick="mostrarNotaMenor()">Mostrar Nota Menor</button><br><br>
+    	<p id="nota menor"></p>
+
+</body>
+
+<script>
+
+var estudiantes =[
+    {
+    	"codigo": "001",
+    	"nombre": "Camila",
+    	"nota": 45
+    },{
+    	"codigo": "002",
+    	"nombre": "Juan Raldes",
+    	"nota": 70
+    },{
+    	"codigo": "003",
+    	"nombre": "Roberto",
+    	"nota": 90
+    },{
+    	"codigo": "004",
+    	"nombre": "Luis",
+    	"nota": 80
+    },{
+    	"codigo": "005",
+    	"nombre": "Raldes",
+    	"nota": 68
+    },{
+    	"codigo": "006",
+    	"nombre": "Palma",
+    	"nota": 78
+    },{
+    	"codigo": "007",
+    	"nombre": "Biemar",
+    	"nota": 95
+    },{
+    	"codigo": "008",
+    	"nombre": "Jaime",
+    	"nota": 85
+    },{
+    	"codigo": "009",
+    	"nombre": "Rosa",
+    	"nota": 55
+    },{
+    	"codigo": "010",
+    	"nombre": "Henry",
+    	"nota": 75
+    },{
+    	"codigo": "011",
+    	"nombre": "Marcos",
+    	"nota": 65 
+    }
+    ];
+
+     function leerJSON(json) {
+    var out ="------------------------Estudiantes-----------------------<br>";
+    var i;
+    var nota;
+    for(var i = 0; i< json.length; i++) {
+    	out += "Codigo: " + json[i].codigo + "-" + "Nombre: " + json[i].nombre + "-" + "Nota: " + json[i].nota + "<br>";
+     }
+     document.getElementById('estudiantes').innerHTML= out;
+   }
+
+ function Estudiante(codigo, nombre, nota1, nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10,nota11) {
+
+   this.codigo = codigo;
+   this.nombre = nombre;
+   this.nota1= nota1;
+   this.nota2= nota2;	
+   this.nota3= nota3;
+   this.nota4= nota4;
+   this.nota5= nota5;
+   this.nota6= nota6;
+   this.nota7= nota7;
+   this.nota8= nota8;
+   this.nota9= nota9;
+   this.nota10= nota10;
+   this.nota11= nota11;
+  this.promedio = function() {
+
+		   
+		 var promedio=(nota1+nota2+nota3+nota4+nota5+nota6+nota7+nota8+nota9+nota10+nota11)/11;
+
+
+		    document.getElementById("mensaje").innerHTML ="El promedio del estudiantes "+this.nombre+" es: "+promedio;
+		    };
+
+		}
+
+
+	var estudiante = new Estudiante( "001", "",45,70,90,80,68,78,95,85,55,75,65); 
+
+  function calcularNotaMayor (json) {
+     var out = "----------------------Nota Mayor-------------------- <br>";
+     var notaMayor = json[0].nota;
+     var pos = 0;
+     var aux = "";
+     for( i = 0; i < json.length; i++) {
+
+     	if(json[i].nota >= 55) {
+     		notaMayor = json[i].nota;
+     		pos = i;
+     		aux=aux+json[pos].nombre + "<br>";
+     	}
+     }
+     document.getElementById('nota mayor').innerHTML= "Las notas mayores son: " + aux;
+    }
+
+       function calcularNotaMenor(json) {
+    var out ="------------------------Nota Menor------------------------<br>";
+    var notaMenor = json[0].nota;
+    var pos = 0;
+    var aux = "";
+    for (i = 0; i < json.length; i++) {
+
+    	if (json[i].nota <= 55) {
+    		notaMenor = json[i].nota;
+    		pos = i;
+    		aux=aux+json[pos].nombre + "<br>";
+    	}
+    }
+    
+    document.getElementById('nota menor').innerHTML= "Las notas menores son: " + aux;
+}
+
+  function mostrarEstudiantes() {
+   leerJSON(estudiantes);
+  }
+
+
+  function miFuncion() {
+   estudiante.promedio(); 
+ }
+  
+  function mostrarNotaMayor() {
+	calcularNotaMayor(estudiantes);
+}
+
+    function mostrarNotaMenor() {
+	calcularNotaMenor(estudiantes);
+}
+ 
+</script>
+
+</html>

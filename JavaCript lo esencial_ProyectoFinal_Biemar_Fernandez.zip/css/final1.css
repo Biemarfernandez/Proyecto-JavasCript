@@ -1,0 +1,21 @@
+#div{
+	background: #AEE4EE;
+	position: absolute;
+	top:5%;
+	left:25%;
+	width:45%;
+	height:auto;
+	padding:10px 30px 10px 30px;
+    border-radius:50px;
+}
+
+h3 {
+	height:center;
+}
+
+body {background: #282B88;}
+
+h1 {
+	color:#AA1D30;
+}
+
